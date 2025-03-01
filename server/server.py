@@ -149,7 +149,8 @@ def handle_post_validation(post_text):
     
     # Final validation check
     if not is_valid_post(clean_text):
-        print(f"Length: {len(clean_text)}, Emojis: {re.search(emoji_pattern, clean_text) is not None}, Hashtags: {clean_text.count('#')}")        return jsonify({
+        print(f"Validation failed after enhancement: '{clean_text}'")
+        return jsonify({
             'error': 'Post still doesn\'t meet requirements after enhancement',
             'post': clean_text
         }), 400
