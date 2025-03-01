@@ -149,8 +149,7 @@ def handle_post_validation(post_text):
     
     # Final validation check
     if not is_valid_post(clean_text):
-        print(f"Validation failed after enhancement: '{clean_text}'")
-        return jsonify({
+        print(f"Length: {len(clean_text)}, Emojis: {re.search(emoji_pattern, clean_text) is not None}, Hashtags: {clean_text.count('#')}")        return jsonify({
             'error': 'Post still doesn\'t meet requirements after enhancement',
             'post': clean_text
         }), 400
@@ -223,6 +222,7 @@ def is_valid_post(text):
         "\U0001F680-\U0001F6FF"  # transport & map symbols
         "\U0001F1E0-\U0001F1FF"  # flags (iOS)
         "]+", 
+        
         flags=re.UNICODE
     )
     if not emoji_pattern.search(text):
