@@ -49,6 +49,10 @@ def retry_request(url, data, headers, retries=5, initial_delay=1, response_type=
                 continue
             raise e
 
+
+@app.route('/')
+def home():
+    return "Server is running! Don't Worry about it Jeet!!"
 # LinkedIn Authentication Routes
 @app.route('/auth/linkedin')
 def auth_linkedin():
