@@ -1,260 +1,580 @@
-.home-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-  animation: fadeIn 1.5s ease-in-out;
+/* Home.css - Enhanced styling for AI Social Connector */
+
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 
+body {
+  background-color: #f5f7fa;
+  color: #333;
+  overflow-x: hidden;
+}
+
+.home-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Error message styles */
+.error-message {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #ff4d4f;
+  color: white;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.error-message p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.error-message button {
+  background: none;
+  border: none;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.error-message button:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Header styles */
 .linkedin-header {
-  margin-bottom: 1.5rem;
-  animation: slideDown 1s ease-in-out;
+  background: linear-gradient(135deg, #0a66c2 0%, #1da1f2 100%);
+  color: white;
+  padding: 3rem 1rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.linkedin-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+  animation: pulse 5s infinite ease-in-out;
 }
 
 .ai-title {
-  font-size: 2.5rem;
-  color: #2c3e50;
-  font-family: 'Arial', sans-serif;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(90deg, #ffffff, #e0e0e0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
+.subtitle {
+  font-size: 1.3rem;
+  font-weight: 300;
+  margin-bottom: 1rem;
+  opacity: 0.9;
+}
+
+/* Platform buttons */
 .platform-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, #ffffff, #f0f2f5);
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.05);
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.platform-card {
   display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
   justify-content: center;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.platform-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
 .ai-button {
-  padding: 0.8rem 1.5rem;
-  font-size: 1.1rem;
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
   border: none;
-  border-radius: 20px;
+  border-radius: 12px;
   cursor: pointer;
-  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  font-family: 'Arial', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.ai-button.active {
-  background-color: #2980b9;
-  color: white;
-}
-
-.ai-login {
-  background-color: #0a66c2; /* LinkedIn blue */
-  color: white;
-}
-
-.ai-login.linkedin:hover {
-  background-color: #2980b9;
-  transform: scale(1.05);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-}
-
-.ai-login.twitter:hover {
-  background-color: #1a91da; /* Darker Twitter blue */
-  transform: scale(1.05);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-}
-
-.ai-close {
-  background-color: #e74c3c;
-  color: white;
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  border-radius: 50%;
-}
-
-.ai-close:hover {
-  background-color: #c0392b;
-  transform: scale(1.1);
-}
-
-.linkedin-post-box {
-  width: 100%;
-  max-width: 600px;
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  padding: 1.5rem;
-  animation: slideUp 1s ease-in-out;
-}
-
-.linkedin-post-header {
+  transition: all 0.3s ease;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 1rem;
-}
-
-.linkedin-profile-pic {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-right: 1rem;
-}
-
-.linkedin-user-info {
-  flex-grow: 1;
-}
-
-.linkedin-user-name {
-  font-size: 1.1rem;
-  color: #2c3e50;
-  font-weight: bold;
-}
-
-.linkedin-visibility {
-  padding: 0.5rem;
-  border-radius: 5px;
-  border: 1px solid #ddd;
-  background-color: #f8f9fa;
-  font-size: 0.9rem;
-  margin-left: 1rem;
-}
-
-.linkedin-post-input {
+  justify-content: center;
   width: 100%;
-  min-height: 100px;
-  padding: 0.8rem;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  resize: vertical;
-  margin-bottom: 1rem;
-  font-size: 1rem;
-  transition: border-color 0.3s ease;
+  font-weight: 600;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.linkedin-post-input:focus {
-  border-color: #2980b9;
-  outline: none;
-  box-shadow: 0 0 5px rgba(41, 128, 185, 0.3);
+.ai-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
 
-.linkedin-post-actions {
-  display: flex;
-  gap: 1rem;
-  justify-content: flex-end;
+.platform-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 0.5rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
-.linkedin-ai-button {
-  background-color: #27ae60;
+.linkedin-icon {
+  background-image: url('https://cdn-icons-png.flaticon.com/512/174/174857.png');
+}
+
+.twitter-icon {
+  background-image: url('https://cdn-icons-png.flaticon.com/512/733/733579.png');
+}
+
+.instagram-icon {
+  background-image: url('https://cdn-icons-png.flaticon.com/512/2111/2111463.png');
+}
+
+.facebook-icon {
+  background-image: url('https://cdn-icons-png.flaticon.com/512/733/733547.png');
+}
+
+.telegram-icon {
+  background-image: url('https://cdn-icons-png.flaticon.com/512/2111/2111488.png');
+}
+
+.whatsapp-icon {
+  background-image: url('https://cdn-icons-png.flaticon.com/512/733/733585.png');
+}
+
+.reddit-icon {
+  background-image: url('https://cdn-icons-png.flaticon.com/512/2111/2111505.png');
+}
+
+.ai-login.linkedin {
+  background: linear-gradient(90deg, #0077b5, #0a66c2);
   color: white;
 }
 
-.linkedin-ai-button:hover {
-  background-color: #2ecc71;
-  transform: scale(1.05);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-}
-
-.ai-post {
-  background-color: #3498db;
+.ai-login.twitter {
+  background: linear-gradient(90deg, #1da1f2, #00acee);
   color: white;
 }
 
-.ai-post:hover {
-  background-color: #2980b9;
-  transform: scale(1.05);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+.ai-login.instagram {
+  background: linear-gradient(90deg, #e1306c, #f77737);
+  color: white;
 }
 
-.ai-thinking {
-  display: flex;
-  align-items: center;
+.ai-login.facebook {
+  background: linear-gradient(90deg, #1877f2, #3b5998);
+  color: white;
 }
 
-.dots {
-  animation: dotBlink 1.5s infinite;
+.ai-login.telegram {
+  background: linear-gradient(90deg, #0088cc, #26a5e4);
+  color: white;
 }
 
-.ai-result {
-  margin-top: 1rem;
-  animation: fadeIn 1s ease-in-out;
+.ai-login.whatsapp {
+  background: linear-gradient(90deg, #25d366, #128c7e);
+  color: white;
 }
 
-.ai-subtitle {
-  font-size: 1.2rem;
-  color: #2c3e50;
-  margin-bottom: 0.5rem;
+.ai-login.reddit {
+  background: linear-gradient(90deg, #ff4500, #ff5700);
+  color: white;
 }
 
-.ai-post-text {
-  font-size: 1rem;
-  color: #34495e;
-  background-color: #f8f9fa;
-  padding: 1rem;
-  border-radius: 5px;
-  margin-bottom: 1rem;
-}
-
-.ai-image {
-  width: 100%;
-  max-width: 500px;
-  border-radius: 5px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes slideDown {
-  from {
-    transform: translateY(-20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes slideUp {
-  from {
-    transform: translateY(20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes dotBlink {
-  0% { content: '.'; }
-  33% { content: '..'; }
-  66% { content: '...'; }
-  100% { content: '.'; }
+.ai-button.connected {
+  background: linear-gradient(90deg, #ffffff, #f0f2f5);
+  border: 3px solid;
 }
 
 .linkedin.connected {
-  background-color: #7f8c8d; /* Gray for connected/disconnected state */
-  cursor: not-allowed;
-}
-
-.twitter {
-  background-color: #1da1f2; /* Twitter blue */
+  color: #0077b5;
+  border-color: #0077b5;
 }
 
 .twitter.connected {
-  background-color: #7f8c8d; /* Gray for connected/disconnected state */
-  cursor: not-allowed;
+  color: #1da1f2;
+  border-color: #1da1f2;
 }
 
-.twitter:hover:not(.connected) {
-  background-color: #1a91da; /* Darker Twitter blue on hover */
+.instagram.connected {
+  color: #e1306c;
+  border-color: #e1306c;
+}
+
+.facebook.connected {
+  color: #1877f2;
+  border-color: #1877f2;
+}
+
+.telegram.connected {
+  color: #0088cc;
+  border-color: #0088cc;
+}
+
+.whatsapp.connected {
+  color: #25d366;
+  border-color: #25d366;
+}
+
+.reddit.connected {
+  color: #ff4500;
+  border-color: #ff4500;
+}
+
+/* AI Features sections */
+.ai-features {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem 1rem;
+  background: linear-gradient(180deg, #f0f2f5, #ffffff);
+}
+
+.ai-section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  text-align: center;
+  color: #222;
+  position: relative;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.ai-section-title::after {
+  content: "";
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 5px;
+  background: linear-gradient(90deg, #0077b5, #1da1f2);
+  border-radius: 3px;
+}
+
+.feature-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2.5rem;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.feature-card {
+  flex: 1 1 320px;
+  max-width: 380px;
+  background-color: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.feature-card:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(0, 119, 181, 0.1), rgba(29, 161, 242, 0.1));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.feature-card:hover::before {
+  opacity: 1;
+}
+
+.feature-img {
+  width: 100%;
+  height: 220px;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.4s ease;
+}
+
+.feature-card:hover .feature-img {
+  transform: scale(1.1);
+}
+
+.post-ai-img {
+  background-image: url('1.jpeg');
+}
+
+.write-ai-img {
+  background-image: url('2.jpeg');
+}
+
+.future-ai-img {
+  background-image: url('3.jpeg');
+}
+
+.feature-content {
+  padding: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.feature-title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #222;
+  background: linear-gradient(90deg, #0077b5, #1da1f2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.feature-description {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+/* Footer */
+.footer {
+  margin-top: auto;
+  background: linear-gradient(135deg, #2c3e50, #1a252f);
+  color: white;
+  padding: 3rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  animation: pulse 6s infinite ease-in-out;
+}
+
+.footer-content {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  padding: 0 2rem;
+  gap: 4rem;
+}
+
+.footer-column {
+  flex: 1;
+  min-width: 200px;
+  padding: 0 1rem;
+  margin-bottom: 2rem;
+}
+
+.footer-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-bottom: 12px;
+  background: linear-gradient(90deg, #ffffff, #cccccc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.footer-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 4px;
+  background: linear-gradient(90deg, #0077b5, #1da1f2);
+}
+
+.footer-links {
+  list-style: none;
+}
+
+.footer-links li {
+  margin-bottom: 0.8rem;
+}
+
+.footer-links a {
+  color: #bbb;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+  display: inline-block;
+}
+
+.footer-links a:hover {
+  color: white;
   transform: scale(1.05);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.contact-icon {
+  width: 20px;
+  height: 20px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.email-icon {
+  background-image: url('https://cdn-icons-png.flaticon.com/512/732/732200.png');
+}
+
+.portfolio-icon {
+  background-image: url('https://cdn-icons-png.flaticon.com/512/1000/1000369.png');
+}
+
+.copyright {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* Animations */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.2;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .ai-title {
+    font-size: 2.2rem;
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .platform-buttons {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .ai-section-title {
+    font-size: 2rem;
+  }
+
+  .feature-card {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  .footer-content {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+  }
+  
+  .footer-column {
+    min-width: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ai-title {
+    font-size: 1.8rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .ai-section-title {
+    font-size: 1.8rem;
+  }
+
+  .feature-img {
+    height: 180px;
+  }
+
+  .feature-title {
+    font-size: 1.4rem;
+  }
+
+  .feature-description {
+    font-size: 0.9rem;
+  }
+
+  .platform-buttons {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-column {
+    min-width: 100%;
+    text-align: center;
+  }
+
+  .footer-title::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
