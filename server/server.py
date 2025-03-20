@@ -26,7 +26,7 @@ LINKEDIN_AUTH_URL = 'https://www.linkedin.com/oauth/v2/authorization'
 LINKEDIN_TOKEN_URL = 'https://www.linkedin.com/oauth/v2/accessToken'
 CLIENT_ID = os.getenv('LINKEDIN_CLIENT_ID')
 CLIENT_SECRET = os.getenv('LINKEDIN_CLIENT_SECRET')
-REDIRECT_URI = os.getenv('LINKEDIN_REDIRECT_URI', 'http://localhost:5001/auth/linkedin/callback')
+REDIRECT_URI = os.getenv('LINKEDIN_REDIRECT_URI', 'https://aiauto-post.onrender.com/auth/linkedin/callback')
 
 # Retry function with exponential backoff
 def retry_request(url, data, headers, retries=5, initial_delay=1, response_type='json'):
