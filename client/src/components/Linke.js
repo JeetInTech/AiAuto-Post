@@ -29,7 +29,7 @@ function Linke() {
 
   const fetchProfile = async (token) => {
     try {
-      const response = await axios.get('http://localhost:5001/api/linkedin-profile', {
+      const response = await axios.get('https://aiauto-post.onrender.com/api/linkedin-profile', {
         headers: { Authorization: `Bearer ${token}` },
       });
       setProfile(response.data);
@@ -40,7 +40,7 @@ function Linke() {
   };
 
   const handleLogin = () => {
-    window.location.href = 'http://localhost:5001/auth/linkedin';
+    window.location.href = 'https://aiauto-post.onrender.com/auth/linkedin';
   };
 
   const handleLogout = () => {
@@ -56,8 +56,9 @@ function Linke() {
       const detailedPrompt = `${prompt}. Provide a detailed LinkedIn post (150-200 words) with context, an engaging tone, emojis, and 3-5 relevant hashtags. Ensure the post is complete and professional.`;
       
       const [postResponse, imageResponse] = await Promise.all([
-        axios.post('http://localhost:5001/generate-post', { prompt: detailedPrompt }),
-        axios.post('http://localhost:5001/generate-image', { prompt }),
+        axios.post('https://aiauto-post.onrender.com/generate-post', { prompt: detailedPrompt }),
+        axios.post('https://aiauto-post.onrender.com/generate-image', { prompt }),
+
       ]);
 
       let generatedPost = postResponse.data.post;
@@ -102,7 +103,7 @@ function Linke() {
   const handlePostToLinkedIn = async () => {
     setIsPosting(true);
     try {
-      const response = await axios.post('http://localhost:5001/post-to-linkedin', {
+      const response = await axios.post('https://aiauto-post.onrender.com/post-to-linkedin', {
         token,
         post,
         imageUrl,

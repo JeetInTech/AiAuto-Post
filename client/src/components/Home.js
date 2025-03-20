@@ -33,7 +33,7 @@ function Home() {
     if (!token[platform]) {
       try {
         const authUrls = {
-          linkedin: 'http://localhost:5001/auth/linkedin',
+          linkedin: 'https://aiauto-post.onrender.com/auth/linkedin',
           twitter: 'http://localhost:5002/twitter/auth?platform=twitter',
           instagram: 'http://localhost:5003/auth/instagram?platform=instagram',
           facebook: 'http://localhost:5004/auth/facebook?platform=facebook',
