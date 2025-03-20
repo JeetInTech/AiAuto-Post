@@ -1,13 +1,17 @@
-flask
-flask-cors
-python-dotenv
-requests
-pillow
-express
-cors
-dotenv
-axios
-form-data
-uuid
-sharp
-gunicorn
+# requirements.txt
+
+# Web framework and CORS
+Flask==2.0.1
+flask-cors==3.0.10
+
+# HTTP requests
+requests==2.28.1
+
+# Environment variable management
+python-dotenv==0.21.0
+
+# Image processing
+Pillow==9.5.0
+
+# Production server for Render
+gunicorn==20.1.0
