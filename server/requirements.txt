@@ -10,3 +10,4 @@ axios
 form-data
 uuid
 sharp
+gunicorn
